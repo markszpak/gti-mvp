@@ -1,0 +1,7 @@
+<% @issues.each do |issue| %>
+    <p class="indent0">
+      <button class="btn btn-info btn-block" type="button"
+              onclick="document.location.href='<%= issue.url %>'">
+      <%= issue.name %></button>
+    </p>
+<% end %>

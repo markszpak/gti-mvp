@@ -1,0 +1,160 @@
+<p class="lead">What Do We Know About Fracking?</p>
+
+<ul class="nav nav-tabs" id="quest-tab2">
+  <li class="active"><a href="#synopsis" data-toggle="tab">Overview</a></li>
+  <li><a href="#perspectives" data-toggle="tab">Perspectives</a></li>
+  <li><a href="#quests" data-toggle="tab">Quests</a></li>
+  <li><a href="#discuss" data-toggle="tab" id="disc">Discuss</a></li>
+  <li><a href="#map" data-toggle="tab">Map</a></li>
+  <li><a href="#create" data-toggle="tab">Create</a></li>
+
+</ul>
+
+
+<div class="tab-content">
+
+  <div class="tab-pane active" id="synopsis">
+
+    <%= image_tag "Fracking_issues_quests.png", :class => 'floatleft', :size => "532x362", :style => "margin-right:20px;" %>
+    <!-- %= @redis_test   % -->
+    <p><em>
+      What is important to know about fracking?
+    </em></p>
+    <p>Key questions and issues are addressed from three perspectives.</p>
+
+    <p><b>Overview:</b> This is an omni-partisan summary of the perspectives on this issue.</p>
+    <p>That summary can be a map, or a display room.</p>
+    <p>It can also be a map of the issue-quests history.</p>
+    <br />
+    <em>
+    <p>In the fall 2012 Quest, 3 perspectives were created on this issue.</p>
+     </em>
+    <hr />
+    <h4>Quests</h4>
+  </div>
+
+  <div class="tab-pane" id="perspectives">
+    <div class='perspective_thumb'>
+       <h5>1 Benefits - Industry View</h5>
+       <p></p>
+     </div>
+   <div class='perspective_thumb' style="background-color: lightcyan">
+     <h5>2 Balance Benefits & Impacts</h5>
+     <p></p>
+   </div>
+   <div class='perspective_thumb'>
+     <h5>3 Negative long term impacts</h5>
+     <p></p>
+   </div>
+    <a href="http://wiki.topicquests.org/wiki/We%20need%20the%20energy%20and%20jobs%2C%20but%20we%20need%20to%20do%20more%20to%20improve%20the%20technology%2C%20approach%20and%20regulations%20to%20make%20sure%20that%20fracking%20is%20safe%20and%20efficient%20-%20Willing%20to%20Exchange%20Some%20Safety/Pollution%20for%20Jobs%20view">Balance Benefits and Impacts</a>
+    <br />
+    <%= image_tag "Fracking_perpective_balance.png", :class => 'floatleft', :size => "522x704", :style => "margin-right:20px;" %>
+  </div>
+
+  <div class="tab-pane" id="guildtools">
+    Dialog | Map | Perspective
+    <p>Discussing | Mapping | Creating</p>
+    <p>Discuss | Map | Perpectives</p>
+  </div>
+
+  <div class="tab-pane" id="discuss">
+    <%= button_tag "Use Debategraph...", :onClick => "dbGraph();" %>
+    <div id="dgraph">
+
+    </div>
+
+  </div>
+
+  <div class="tab-pane" id="map">
+      Mapping, re-mapping, playing
+      <p>...</p>
+      <p>...</p>
+  </div>
+
+  <div class="tab-pane" id="create">
+      Harvest, innovate
+      <p>Cool Tools</p>
+      <p>Perspectives Editor</p>
+    </div>
+
+  <div class="tab-pane" id="quests">
+
+    <br />
+    <!-- Left hand panel, with text view -->
+    <div style="float: left; width:350px">
+      <button name="button" id="hideshow">Show Claims</button>
+      <%= render 'perspect_2' %>
+      <p>So, <span class="nodal" data-node_id="243408">what do we know about fracking?</span></p>
+      <p>What are the <span class="nodal" data-node_id="243406">key issues?</span></p>
+      <p><span class="nodal" data-node_id="44072">What are the benefits?</span></p>
+      <p>Further <span class="nodal" data-node_id="0">stuff</span> follows here...<p>
+      <p><span class="nodal" data-node_id="244073">What are the liabilities?</span></p>
+    </div>
+
+    <!-- Right hand panel, with nodal view -->
+    <div style="padding-left:170px">
+      &nbsp;&nbsp;&nbsp;
+      <a href="http://debategraph.org/Stream.aspx?nid=243406&vt=bubble&dc=focus" target="_new">
+         Fracking Issues Debategraph</a>
+    </div>
+    <div id="dgraph2" style="float: left">
+
+    </div>
+    <br style="clear:left" />
+  </div>
+
+</div>
+
+
+<div class="cf" id="perspectives">
+
+
+</div>
+<!--
+<br/>
+<div class="row">
+    <div class="span10">
+      < %= button_tag "Converse", :onClick => "location.href='converse'" %>
+      < %= button_tag "Map & Re-Map", :onClick => "location.href='converse'" %>
+      < %= button_tag "Perspective", :onClick => "location.href='converse'" %>
+     </div>
+
+</div>
+-->
+<script>
+  function showNodeTree(node_id)        {
+      var linkToDB = "<div style='text-align:center;'><a href='http://debategraph.org/Stream.aspx?nid=243406&vt=bubble&dc=focus' "
+              + "target='_new'>Fracking Issues Debategraph</a></div>";
+      var iframe_code = "<iframe src='http://debategraph.org/Flash/fv.aspx?r=" + node_id + "' frameborder='0' width='550' height='625' scrolling='no'></iframe>";
+      $('#dgraph2').html(iframe_code);
+  }
+  $(document).ready(function(){
+     $('.nodal').mouseover(function(){
+        $(this).addClass('hover');
+        var nid = $(this).attr("data-node_id");
+        if ( nid > 0 )  {
+            showNodeTree(nid);
+        }
+     });
+
+     $('.nodal').mouseout(function(){
+        $(this).removeClass('hover');
+     });
+
+     $('#hideshow').click(function()  {
+         $this = $(this);
+         if ($this.text() == "Show Claims" ) {
+             $('.nodal').addClass('hover');
+             $this.text("Hide Claims");
+         }
+         else    {
+             $('.nodal').removeClass('hover');
+             $this.text("Show Claims");
+         }
+     });
+  });
+  function showAssertions() {
+      $('.nodal').addClass('hover');
+  }
+
+</script>

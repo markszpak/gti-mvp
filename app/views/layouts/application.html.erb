@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gtimvp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div id="content" class="row">
+    <div class="span14">
+      <%= image_tag "TQ150b.gif", :class => 'floatleft', :size => "150x47", :style => "margin-right:20px;" %>
+      <p class="lead vert30">Get The Issues</p>
+
+      <div class="row">
+        <div class="span14">
+          <div class="row">
+            <div id="top_issues" class="span2">
+              <%= render 'issue/issue_nav' %>
+            </div>
+            <div id="main" class="span12">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div id="footer" class="row">
+        <div class="span10 offset2">
+          <%= button_tag "Home", :onClick => "location.href='index'" %> &nbsp;&nbsp;
+          <%= button_tag "How to Play", :onClick => "location.href='play'" %>&nbsp;&nbsp;
+          <%= button_tag "Guilds" %>&nbsp;&nbsp;
+          <%= button_tag "About GTI" %>&nbsp;&nbsp;
+          <%= button_tag "Admin" %>&nbsp;&nbsp;
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
